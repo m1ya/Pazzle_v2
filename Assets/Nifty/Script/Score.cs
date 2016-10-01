@@ -53,7 +53,7 @@ public class Score : MonoBehaviour
 		// スコア・ハイスコアを表示する
 		scoreLabel.text = "スコア" + score.ToString ();
 		//highScoreGUIText.text = "HighScore : " + highScore.ToString ();
-		Debug.Log(score);
+		//Debug.Log(score);
 
 	}
 	//スコアを追加
