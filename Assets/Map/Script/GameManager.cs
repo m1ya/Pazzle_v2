@@ -15,10 +15,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject Button;
 
 	private LocationService GPS;
-	private float[] lati = new float[40];
-	private float[] lngi = new float[40];
-	private float[] dis = new float[40];
-	private string[] name = new string[40];
+	private float[] lati = new float[43];
+	private float[] lngi = new float[43];
+	private float[] dis = new float[43];
+	private string[] name = new string[43];
 	private WWW dlImage;
 
 	void Start () {
@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// ジロッカソン会場
-		lat = 35.655427f;
-		lng = 139.693722f;
+		lat = 35.655427f; //下が負
+		lng = 139.693722f; //左が負
 
 		//ラーメン二郎 三田本店
 		lati[1] = 35.648080f;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
 		lati[3] = 35.661771f;
 		lngi[3] = 139.583891f;
 		name[3] = "仙川店";
-		//鶴見店
+		//鶴見店							close
 		lati[4] = 35.497077f;
 		lngi[4] = 139.661272f;
 		name[4] = "鶴見店";
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour {
 		lati[14] = 35.672048f;
 		lngi[14] = 139.477253f;
 		name[14] = "府中店";
-		//高田馬場店
+		//高田馬場店						close
 		lati[15] = 35.715480f;
 		lngi[15] = 139.706601f;
 		name[15] = "高田馬場店";
@@ -194,22 +194,40 @@ public class GameManager : MonoBehaviour {
 		lati[38] = 35.779820f;
 		lngi[38] = 139.720836f;
 		name[38] = "赤羽店";
+		//札幌店
+		lati[39] = 43.067390f;
+		lngi[39] = 141.343882f;
+		name[39] = "札幌店";
+		//会津店
+		lati[40] = 37.506627f;
+		lngi[40] = 139.931417f;
+		name[40] = "会津店";
+		//蒲田店
+		lati[41] = 35.563734f;
+		lngi[41] = 139.714574f;
+		name[41] = "会津店";
+		//新潟店
+		lati[42] = 37.917234f;
+		lngi[42] = 139.060083f;
+		name[42] = "会津店";
 
 		StartCoroutine(GetMapImage());
 	}
 		
 	void Update () {
 		//二郎と自分の距離を測る
-		for(int i = 1; i < 39 ; i++){
+		for(int i = 1; i < 43 ; i++){
 			dis[i] = distance(lat,lati[i],lng,lngi[i]);
 			//Debug.Log (dis [i] + "," + i);
 		}
 
 		//最短距離の店舗を探索
 		int prei = 1;
-		for (int i = 1; i < 39; i++) {
-			if (dis[prei] > dis [i]) {
-				prei = i;
+		for (int i = 1; i < 43; i++) {
+			if (i != 4 && i != 15) {
+				if (dis [prei] > dis [i]) {
+					prei = i;
+				}
 			}
 			Debug.Log (i + "," + dis [prei] + "," + dis [i] + "," + prei);
 		}
@@ -218,8 +236,8 @@ public class GameManager : MonoBehaviour {
 		string Near = name[prei];
 		Nearest.text = "最寄りは" + Near;
 
-		//距離の判定(50m以内にあれば)
-		if (dis [prei] <= 50) {
+		//距離の判定(1以内にあれば)
+		if (dis [prei] <= 0.08f) {
 			Button.GetComponent<Button> ().enabled = true;
 		} else {
 			Button.GetComponent<Button> ().enabled = false;
@@ -291,11 +309,11 @@ public class GameManager : MonoBehaviour {
 		url += string.Format("?center={0},{1}", lat, lng);
 		url += "&zoom=" + zoom.ToString ();
 		url += "&size=750x1334&scale=2&maptype=roadmap&sensor=true";
-		url += string.Format("&markers={0},{1}", lat, lng);
+		url += string.Format("&markers=color:purple|{0},{1}", lat, lng);
 		url += string.Format("&markers={0},{1}", lati[1], lngi[1]);
 		url += string.Format("&markers={0},{1}", lati[2], lngi[2]);
 		url += string.Format("&markers={0},{1}", lati[3], lngi[3]);
-		url += string.Format("&markers={0},{1}", lati[4], lngi[4]);
+		url += string.Format("&markers=color:black|{0},{1}", lati[4], lngi[4]);
 		url += string.Format("&markers={0},{1}", lati[5], lngi[5]);
 		url += string.Format("&markers={0},{1}", lati[6], lngi[6]);
 		url += string.Format("&markers={0},{1}", lati[7], lngi[7]);
@@ -306,7 +324,7 @@ public class GameManager : MonoBehaviour {
 		url += string.Format("&markers={0},{1}", lati[12], lngi[12]);
 		url += string.Format("&markers={0},{1}", lati[13], lngi[13]);
 		url += string.Format("&markers={0},{1}", lati[14], lngi[14]);
-		url += string.Format("&markers={0},{1}", lati[15], lngi[15]);
+		url += string.Format("&markers=color:black|{0},{1}", lati[15], lngi[15]);
 		url += string.Format("&markers={0},{1}", lati[16], lngi[16]);
 		url += string.Format("&markers={0},{1}", lati[17], lngi[17]);
 		url += string.Format("&markers={0},{1}", lati[18], lngi[18]);
@@ -330,6 +348,10 @@ public class GameManager : MonoBehaviour {
 		url += string.Format("&markers={0},{1}", lati[36], lngi[36]);
 		url += string.Format("&markers={0},{1}", lati[37], lngi[37]);
 		url += string.Format("&markers={0},{1}", lati[38], lngi[38]); 
+		url += string.Format("&markers={0},{1}", lati[39], lngi[39]); 
+		url += string.Format("&markers={0},{1}", lati[40], lngi[40]); 
+		url += string.Format("&markers={0},{1}", lati[41], lngi[41]); 
+		url += string.Format("&markers={0},{1}", lati[42], lngi[42]); 
 		Debug.Log(url);
 
 		// ダウンロード
