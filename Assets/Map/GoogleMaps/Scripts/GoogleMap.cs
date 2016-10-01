@@ -3,8 +3,6 @@ using System.Collections;
 
 public class GoogleMap : MonoBehaviour
 {
-	
-
 	public enum MapType
 	{
 		RoadMap,

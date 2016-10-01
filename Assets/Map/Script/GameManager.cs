@@ -10,9 +10,15 @@ public class GameManager : MonoBehaviour {
 	public static int zoom = 13;
 	public static float lat, lng;
 
+	public Text Nearest;
+	private float ND;
+	public GameObject Button;
+
 	private LocationService GPS;
 	private float[] lati = new float[40];
 	private float[] lngi = new float[40];
+	private float[] dis = new float[40];
+	private string[] name = new string[40];
 	private WWW dlImage;
 
 	void Start () {
@@ -39,6 +45,7 @@ public class GameManager : MonoBehaviour {
 		//ラーメン二郎 三田本店
 		lati[1] = 35.648080f;
 		lngi[1] = 139.74161f;
+		name[1] = "三田本店";
 		// 目黒店
 		lati[2] = 35.634192f;
 		lngi[2] = 139.707051f;
@@ -191,6 +198,31 @@ public class GameManager : MonoBehaviour {
 				lat = data.latitude;
 				lng = data.longitude;
 				StartCoroutine(GetMapImage());
+
+				//二郎と自分の距離を測る
+				for(int i = 1; i < 40 ; i++){
+					dis[i] = distance(lat,lati[i],lng,lngi[i]);
+				}
+
+				//最短距離の店舗を探索
+				int prei = 1;
+				for (int i = 1; i < 40; i++) {
+						if (dis[prei] > dis [i]) {
+							prei = i;
+						}
+				}
+
+				//最短距離の店舗名を表示
+				string Near = name[prei];
+				Nearest.text = "最寄りは" + Near;
+
+				//距離の判定(50m以内にあれば)
+				if (dis [prei] <= 50) {
+					Button.GetComponent<Button> ().enabled = true;
+				} else {
+					Button.GetComponent<Button> ().enabled = false;
+				}
+
 			}
 			break;
 		}
