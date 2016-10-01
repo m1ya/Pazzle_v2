@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GoogleMap : MonoBehaviour
 {
+	
+
 	public enum MapType
 	{
 		RoadMap,
@@ -13,7 +15,7 @@ public class GoogleMap : MonoBehaviour
 	public bool loadOnStart = true;
 	public bool autoLocateCenter = true;
 	public GoogleMapLocation centerLocation;
-	public int zoom = 13;
+	public static int zoom = 13;
 	public MapType mapType;
 	public int size = 512;
 	public bool doubleResolution = false;
@@ -30,7 +32,8 @@ public class GoogleMap : MonoBehaviour
 		}
 		StartCoroutine(_Refresh());
 	}
-	
+
+
 	IEnumerator _Refresh ()
 	{
 		var url = "http://maps.googleapis.com/maps/api/staticmap";
