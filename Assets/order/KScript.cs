@@ -14,16 +14,16 @@ public class KScript : MonoBehaviour {
 	{	
 		Kselect = dropdown.value;
 		switch (dropdown.value){
-		case 0:
+		case 1:
 			KValue = "";
 			break;
-		case 1:
+		case 2:
 			KValue = "カラメ";
 			break;
-		case 2:
+		case 3:
 			KValue = "カラメマシ";
 			break;
-		case 3:
+		case 4:
 			KValue = "カラメマシマシ";
 			break;
 		default:

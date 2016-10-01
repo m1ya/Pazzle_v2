@@ -14,16 +14,16 @@ public class YScript : MonoBehaviour {
 	{
 		Yselect = dropdown.value;
 		switch (dropdown.value){
-		case 0:
+		case 1:
 			YValue = "ヌキ";
 			break;
-		case 1:
+		case 2:
 			YValue = "";
 			break;
-		case 2:
+		case 3:
 			YValue = "マシ";
 			break;
-		case 3:
+		case 4:
 			YValue = "マシマシ";
 			break;
 		default:

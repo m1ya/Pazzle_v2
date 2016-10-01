@@ -14,16 +14,16 @@ public class NScript : MonoBehaviour {
 	{
 		Nselect = dropdown.value;
 		switch (dropdown.value){
-		case 0:
+		case 1:
 			NValue = "ヌキ";
 			break;
-		case 1:
+		case 2:
 			NValue = "";
 			break;
-		case 2:
+		case 3:
 			NValue = "マシ";
 			break;
-		case 3:
+		case 4:
 			NValue = "マシマシ";
 			break;
 		default:

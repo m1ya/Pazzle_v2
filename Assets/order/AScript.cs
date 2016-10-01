@@ -14,16 +14,16 @@ public class AScript : MonoBehaviour {
 	{
 		Aselect = dropdown.value;
 		switch (dropdown.value){
-		case 0:
+		case 1:
 			AValue = "ヌキ";
 			break;
-		case 1:
+		case 2:
 			AValue = "";
 			break;
-		case 2:
+		case 3:
 			AValue = "マシ";
 			break;
-		case 3:
+		case 4:
 			AValue = "マシマシ";
 			break;
 		default:
