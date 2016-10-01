@@ -3,17 +3,17 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 public class LogInManager : MonoBehaviour {
 
-	private GameObject guiTextLogIn;   // ログインテキスト
-	private GameObject guiTextSignUp;  // 新規登録テキスト
+	public GameObject guiTextLogIn;   // ログインテキスト
+	public GameObject guiTextSignUp;  // 新規登録テキスト
 
 	// ログイン画面のときtrue, 新規登録画面のときfalse
 	private bool isLogIn;
 
 	// ボタンが押されると対応する変数がtrueになる
-	private bool logInButton;
-	private bool signUpMenuButton;
-	private bool signUpButton;
-	private bool backButton;
+	public bool logInButton;
+	public bool signUpMenuButton;
+	public bool signUpButton;
+	public bool backButton;
 
 	// テキストボックスで入力される文字列を格納
 	public string id;
@@ -25,12 +25,18 @@ public class LogInManager : MonoBehaviour {
 		FindObjectOfType<UserAuth>().logOut();
 
 		// ゲームオブジェクトを検索し取得する
-		guiTextLogIn  = GameObject.Find ("GUITextLogIn");
-		guiTextSignUp = GameObject.Find ("GUITextSignUp");  
+		//guiTextLogIn  = GameObject.Find ("LogInSet");
+		//guiTextSignUp = GameObject.Find ("SignUpSet");  
 
 		isLogIn = true;
 		guiTextSignUp.SetActive (false);
 		guiTextLogIn.SetActive (true);
+
+		//boolの初期化
+		logInButton = false;
+		signUpButton = false;
+		signUpMenuButton = false;
+		backButton = false;
 
 	}
 
@@ -66,7 +72,7 @@ public class LogInManager : MonoBehaviour {
 
 		// currentPlayerを毎フレーム監視し、ログインが完了したら
 		if( FindObjectOfType<UserAuth>().currentPlayer() != null )
-			SceneManager.LoadScene("Stage");
+			SceneManager.LoadScene("Map");
 
 	}
 
