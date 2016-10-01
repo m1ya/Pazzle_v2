@@ -14,7 +14,7 @@ public class LeaderBoardManager : MonoBehaviour {
 	bool isLeaderBoardFetched;
 
 	// ボタンが押されると対応する変数がtrueになる
-	private bool backButton;
+	//private bool backButton;
 
 	void Start ()
 	{
@@ -73,16 +73,19 @@ public class LeaderBoardManager : MonoBehaviour {
 	}
 
 	void OnGUI () {
+		//GUIの背景色
+		//GUI.backgroundColor = new Color(0.0f, 0.0f, 0.0f, 0.5f);
+		GUI.color = Color.black;
 		drawMenu();
 		// 戻るボタンが押されたら
-		if( backButton )
-			Application.LoadLevel("Stage");
+		/*if( backButton )
+			Application.LoadLevel("Stage");*/
 	}
 
 	private void drawMenu() {
 		// ボタンの設置
 		int btnW = 170, btnH = 30;
 		GUI.skin.button.fontSize = 20;
-		backButton = GUI.Button( new Rect(Screen.width*1/2 - btnW*1/2, Screen.height*7/8 - btnH*1/2, btnW, btnH), "Back" );
+		//backButton = GUI.Button( new Rect(Screen.width*1/2 - btnW*1/2, Screen.height*7/8 - btnH*1/2, btnW, btnH), "Back" );
 	}
 }

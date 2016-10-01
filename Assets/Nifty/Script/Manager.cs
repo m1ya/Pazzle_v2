@@ -3,13 +3,13 @@ using UnityEngine.SceneManagement;
 public class Manager : MonoBehaviour
 {
 	// Playerプレハブ
-	public GameObject player;
+	//public GameObject player;
 
 	// タイトル
 	private GameObject title;
 
 	// ボタンが押されると対応する変数がtrueになる
-	private bool leaderBoardButton;
+	public bool leaderBoardButton;
 	private bool commentButton;
 	private bool logOutButton;
 
@@ -44,7 +44,7 @@ public class Manager : MonoBehaviour
 	void GameStart() {
 		// ゲームスタート時に、タイトルを非表示にしてプレイヤーを作成する
 		title.SetActive (false);
-		Instantiate (player, player.transform.position, player.transform.rotation);
+		//Instantiate (player, player.transform.position, player.transform.rotation);
 	}
 
 	public void GameOver() {
@@ -62,7 +62,7 @@ public class Manager : MonoBehaviour
 		// ボタンの設置
 		int btnW = 140, btnH = 50;
 		GUI.skin.button.fontSize = 18;
-		leaderBoardButton = GUI.Button( new Rect(0*btnW, 0, btnW, btnH), "Leader Board" );
+		//leaderBoardButton = GUI.Button( new Rect(0*btnW, 0, btnW, btnH), "Leader Board" );
 		commentButton     = GUI.Button( new Rect(1*btnW, 0, btnW, btnH), "Comment" );
 		logOutButton      = GUI.Button( new Rect(2*btnW, 0, btnW, btnH), "Log Out" );
 	}
