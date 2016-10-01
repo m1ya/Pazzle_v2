@@ -2,29 +2,29 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class YScript : MonoBehaviour {
+public class KScript : MonoBehaviour {
 
-	public static string YValue;
-	public static int Yselect = 0;
+	public static string KValue;
+	public static int Kselect = 0;
 	void Start(){
 
 	}
 
 	public void ChangeValue(Dropdown dropdown)
-	{
-		Yselect = dropdown.value;
+	{	
+		Kselect = dropdown.value;
 		switch (dropdown.value){
 		case 0:
-			YValue = "ヌキ";
+			KValue = "";
 			break;
 		case 1:
-			YValue = "";
+			KValue = "カラメ";
 			break;
 		case 2:
-			YValue = "マシ";
+			KValue = "カラメマシ";
 			break;
 		case 3:
-			YValue = "マシマシ";
+			KValue = "カラメマシマシ";
 			break;
 		default:
 			break;

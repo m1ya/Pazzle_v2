@@ -21,6 +21,9 @@ public class DDScript : MonoBehaviour {
 		case 2:
 			Debug.Log ("2");
 			break;
+		case 3:
+			Debug.Log ("3");
+			break;
 		default:
 			break;
 		}

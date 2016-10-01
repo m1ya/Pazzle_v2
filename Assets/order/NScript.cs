@@ -1,30 +1,34 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using System.Linq;
+using System.Collections;
 
 public class NScript : MonoBehaviour {
 
-	//連携するGameObject
-	public ToggleGroup toggleGroup;
 	public static string NValue;
-	// Use this for initialization
-	void Start()
-	{
-	}
-	// Update is called once per frame
-	void Update()
-	{
+	public static int Nselect = 0;
+	void Start(){
+
 	}
 
-	public void onClick()
+	public void ChangeValue(Dropdown dropdown)
 	{
-		//Get the label in activated toggles
-		string selectedLabel = toggleGroup.ActiveToggles()
-			.First().GetComponentsInChildren<Text>()
-			.First(t => t.name == "Label").text;
-
-		Debug.Log("selected " + selectedLabel);
-		NValue = selectedLabel;
+		Nselect = dropdown.value;
+		switch (dropdown.value){
+		case 0:
+			NValue = "ヌキ";
+			break;
+		case 1:
+			NValue = "";
+			break;
+		case 2:
+			NValue = "マシ";
+			break;
+		case 3:
+			NValue = "マシマシ";
+			break;
+		default:
+			break;
+		}
 	}
+
 }
