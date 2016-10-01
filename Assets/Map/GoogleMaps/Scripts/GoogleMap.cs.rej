@@ -1,0 +1,10 @@
+diff a/Assets/Map/GoogleMaps/Scripts/GoogleMap.cs b/Assets/Map/GoogleMaps/Scripts/GoogleMap.cs	(rejected hunks)
+@@ -3,6 +3,8 @@
+ 
+ public class GoogleMap : MonoBehaviour
+ {
++	
++
+ 	public enum MapType
+ 	{
+ 		RoadMap,
