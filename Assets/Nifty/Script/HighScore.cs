@@ -60,6 +60,7 @@ namespace NCMB
 						Score sc = scoreManager.GetComponent<Score>();
 						//サーバー上のハイスコアを端末に同期
 						sc.FetchScore();
+						Debug.Log("フェッチ完了");
 						//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 					}
 				}
