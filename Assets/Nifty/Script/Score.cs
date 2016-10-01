@@ -45,15 +45,15 @@ public class Score : MonoBehaviour
 	public void FetchScore()
 	{
 		score = highScore.score;
-
+		Debug.Log ("フェッチしたよ");
 	}
 
 	void Update ()
 	{
-		
 		// スコア・ハイスコアを表示する
-		scoreLabel.text = "あなたのスコアは" + score.ToString ();
+		scoreLabel.text = "スコア" + score.ToString ();
 		//highScoreGUIText.text = "HighScore : " + highScore.ToString ();
+		Debug.Log(score);
 
 	}
 	//スコアを追加
@@ -61,6 +61,7 @@ public class Score : MonoBehaviour
 	{
 		score += 1;
 		Debug.Log (score);
+		SendScore ();
 	}
 	//スコアをサーバーに送信
 	public void SendScore()
