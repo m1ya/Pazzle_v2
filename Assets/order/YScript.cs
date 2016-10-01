@@ -1,30 +1,34 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using System.Linq;
+using System.Collections;
 
 public class YScript : MonoBehaviour {
 
-	//連携するGameObject
-	public ToggleGroup toggleGroup;
 	public static string YValue;
-	// Use this for initialization
-	void Start()
-	{
-	}
-	// Update is called once per frame
-	void Update()
-	{
+	public static int Yselect = 0;
+	void Start(){
+
 	}
 
-	public void onClick()
+	public void ChangeValue(Dropdown dropdown)
 	{
-		//Get the label in activated toggles
-		string selectedLabel = toggleGroup.ActiveToggles()
-			.First().GetComponentsInChildren<Text>()
-			.First(t => t.name == "Label").text;
-
-		Debug.Log("selected " + selectedLabel);
-		YValue = selectedLabel;
+		Yselect = dropdown.value;
+		switch (dropdown.value){
+		case 1:
+			YValue = "ヌキ";
+			break;
+		case 2:
+			YValue = "";
+			break;
+		case 3:
+			YValue = "マシ";
+			break;
+		case 4:
+			YValue = "マシマシ";
+			break;
+		default:
+			break;
+		}
 	}
+
 }
