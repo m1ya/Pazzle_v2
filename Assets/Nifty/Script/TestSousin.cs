@@ -18,7 +18,9 @@ public class TestSousin : MonoBehaviour {
 	}
 	public void PointUp()
 	{
+		Debug.Log ("押せてるよ");
 		sc.PointUp ();
+
 	}
 	public void Sousin()
 	{

@@ -14,7 +14,7 @@ public class Score : MonoBehaviour
 	//public GUIText saveScoreGUIText = null;
 
 	// スコア
-	private int score;
+	int score;
 
 	// ハイスコア
 	private NCMB.HighScore highScore;
@@ -28,7 +28,7 @@ public class Score : MonoBehaviour
 	private string ScoreKey = "Score";
 	//public static bool isSend;
 	//public static bool isPoint;
-
+	//int i;
 	void Start ()
 	{
 		Initialize ();
@@ -36,6 +36,8 @@ public class Score : MonoBehaviour
 		string name = FindObjectOfType<UserAuth>().currentPlayer();
 		highScore = new NCMB.HighScore( 0, name );
 		highScore.fetch();
+		Debug.Log (score);
+		//i = 0;
 
 	}
 
@@ -51,9 +53,9 @@ public class Score : MonoBehaviour
 	void Update ()
 	{
 		// スコア・ハイスコアを表示する
-		scoreLabel.text = "スコア" + score.ToString ();
+		scoreLabel.text = "スコア" + highScore.score.ToString();
 		//highScoreGUIText.text = "HighScore : " + highScore.ToString ();
-		//Debug.Log(score);
+		Debug.Log(highScore.score);
 
 	}
 	//スコアを追加
@@ -62,6 +64,7 @@ public class Score : MonoBehaviour
 		score += 1;
 		Debug.Log (score);
 		SendScore ();
+		//i += 1;
 	}
 	//スコアをサーバーに送信
 	public void SendScore()
