@@ -17,7 +17,8 @@ public class playerAtack : MonoBehaviour {
 			transform.position -= new Vector3(1.5f, 0f, 0f) * Time.deltaTime;
 		}
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			Instantiate (eater,this.transform.position,Quaternion.identity);
+			Debug.Log ("発射");
+			//Instantiate (eater,this.transform.position,this.transform.rotation);
 		}
 
 	}
