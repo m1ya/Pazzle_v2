@@ -7,11 +7,16 @@ public class EnemyBall : MonoBehaviour {
 	public Rigidbody rb;
 	void Start(){
 		rb = this.GetComponent<Rigidbody>();
-		rb.velocity = transform.right * 1;
+		rb.velocity = transform.right * 1.5f;
+		Invoke ("DesBall",2);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+	void DesBall(){
+		Destroy (this.gameObject);
+	}
+
 }
