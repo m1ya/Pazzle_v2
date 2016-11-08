@@ -16,6 +16,7 @@ public class PlayerSctipt : MonoBehaviour {
 	void Update () {
 		Move ();
 	}
+
 	//移動全体を管理
 	void Move()
 	{
@@ -27,16 +28,15 @@ public class PlayerSctipt : MonoBehaviour {
 		}
 
 	}
-
-	//Rightボタンを押している間は右方向へ移動
-	public void Right()
+	//ボタンによって移動方向を決定
+	public void Direction(string direction)
 	{
-		rightMove = !rightMove;
-	}
-	//Leftボタンを押している間は左方向へ移動
-	public void Left()
-	{
-		leftMove = !leftMove;
+		if (direction == "Right") {
+			rightMove = !rightMove;
+		}
+		if (direction == "Left") {
+			leftMove = !leftMove;
+		}
 	}
 
 
