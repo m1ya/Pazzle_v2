@@ -7,12 +7,11 @@ public class EnemyScript : MonoBehaviour {
 	float MoveNum = 0;
 	public float BallCount;
 	public GameObject Ball;
-	private Rigidbody Erb;
+
 	GameObject BallFolder;
 	// Use this for initialization
 	void Start () {
-		Erb = this.GetComponent<Rigidbody>();
-		Erb.velocity = transform.up * -0.5f;
+
 		InvokeRepeating ("Shot", 1.5f,1.5f);
 		BallFolder = GameObject.Find ("BallFolder");
 	}
