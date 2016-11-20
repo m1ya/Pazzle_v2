@@ -7,7 +7,7 @@ public class PlayerSctipt : MonoBehaviour {
 	bool rightMove;
 	bool leftMove;
 	//先頭かどうか
-	bool isLeader = true;
+	public bool isLeader = false;
 	//直進するかどうか
 	bool isStraight = false;
 	// Use this for initialization
@@ -18,7 +18,8 @@ public class PlayerSctipt : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//このインスタンスが先頭の場合のみ移動が適用される
+		SwhichPlayer ();
+		//全メソッドはこのインスタンスが先頭の場合のみ実行される
 		if (!isLeader) return;
 		Move ();
 	}
@@ -50,11 +51,13 @@ public class PlayerSctipt : MonoBehaviour {
 	}
 
 
-	//攻撃を管理
+	//攻撃ボタンをおした時の処理を管理
 	public void Attack()
 	{
-		//Instantiate (eater,this.transform.position,Quaternion.identity);
+		//プレイヤーが直進する
 		isStraight = true;
+		//操作対象を後ろに並んでいるプレイヤーに変更
+		SwhichPlayer();
 	}
 
 	//死亡を管理
@@ -63,7 +66,7 @@ public class PlayerSctipt : MonoBehaviour {
 		Destroy (gameObject);
 		Destroy (collider.gameObject);
 		//満足度低下
-		MiniGameManager.Manzokudo--;
+		MiniGameManager.manzokudo--;
 	}
 
 	//衝突処理全体を管理
@@ -71,6 +74,26 @@ public class PlayerSctipt : MonoBehaviour {
 		if (collider.tag == "EneAtt") {
 			Death (collider);
 			}
+	}
+
+	//背中からRayを飛ばして操作対象を切り替える
+	void SwhichPlayer()
+	{
+		//Rayの作成
+		Ray ray = new Ray (transform.position, new Vector3 (0, -1, 0));
+
+		//Rayが当たったオブジェクトの情報を入れる箱
+		RaycastHit hit;
+		//Rayの飛ばせる距離
+		int distance = 10;
+		//Rayの可視化
+		Debug.DrawLine (ray.origin, ray.direction * distance, Color.red);
+		//もしRayにオブジェクトが衝突したら
+		if (Physics.Raycast(ray,out hit,distance))
+		{
+			if (hit.collider.tag == "Player")
+				Debug.Log ("当たった");
+		}
 	}
 
 }
