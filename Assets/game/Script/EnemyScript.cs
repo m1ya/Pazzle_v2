@@ -77,8 +77,8 @@ public class EnemyScript : MonoBehaviour {
 	//死亡を管理
 	void Death()
 	{
-		Destroy (gameObject);
 		MiniGameManager.manzokudo++;
+		Destroy (gameObject);
 	}
 
 }
